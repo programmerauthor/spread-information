@@ -4,6 +4,25 @@ const app = new Koa();
 const fs = require('fs-extra');
 
 
+
+//获取最新的数据集合
+function getNewInfos(newTimeline,lastid){
+    let newarr = [];
+    if(lastid){
+        for(let i = 0; newTimeline && i < newTimeline.length; i++){
+            let info = newTimeline[i];
+            if(info.id > lastid){
+                newarr.push(info);
+            }else{
+                break;
+            }
+        }
+    }else{
+        newarr = newTimeline;
+    }
+    return newarr;
+}
+
 //获取所有信息
 router.get('/data/all', async (ctx, next) => {
     let data = await fs.readJSON('data/data.json');
@@ -12,7 +31,7 @@ router.get('/data/all', async (ctx, next) => {
 
 //获取指定省份的信息
 router.get('/data/getAreaStat/:provice', async (ctx, next) =>{
-    var provice = ctx.params.provice;
+    let provice = ctx.params.provice;
     console.log(ctx.params)
     let data = await fs.readJSON('data/data.json');
     let areaStat = data.getAreaStat;
@@ -37,6 +56,15 @@ router.get('/data/getTimelineService', async (ctx,next) => {
     let data = await fs.readJSON('data/data.json');
     let timeline = data.getTimelineService;
     ctx.response.body = timeline;
+});
+
+//获取最新事件
+router.get('/data/getNewest/:lastid', async (ctx,next) => {
+    let lastid = ctx.params.lastid;
+    let data = await fs.readJSON('data/data.json');
+    let timeline = data.getTimelineService;
+    let newest = lastid ? getNewInfos(timeline,lastid) : [timeline[0]];
+    ctx.response.body = newest;
 });
 
 //获取整体统计信息
