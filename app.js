@@ -25,7 +25,20 @@ async function getData(){
 }
 
 async function main(){
-    let data = await getData();
+    let data = await getData()||{};
+    try {
+        let cache = await fs.readJSON('data/data.json');
+        if(cache){
+            let keys = Object.keys(cache);
+            for(let i = 0; i < keys.length; i++){
+                let key = keys[i];
+                //测试中发现数据源可能会产生丢失部分数据的问题，如果缺少某项数据，复用缓存数据
+                data[key] = data[key] || cache[key];
+            }
+        }  
+    } catch (error) {
+        console.log(error);
+    }
     await fs.writeJSON('data/data.json',data)//保存数据
 }
 
