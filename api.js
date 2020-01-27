@@ -53,8 +53,7 @@ router.get('/data/getAreaStat/:provice', async (ctx, next) =>{
 
 //获取信息时间线
 router.get('/data/getTimelineService', async (ctx,next) => {
-    let data = await fs.readJSON('data/data.json');
-    let timeline = data.getTimelineService;
+    let timeline = await fs.readJSON('data/timeline.json');
     ctx.response.body = timeline;
 });
 
