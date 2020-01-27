@@ -67,14 +67,35 @@ router.get('/data/getNewest/:lastid', async (ctx,next) => {
     ctx.response.body = newest;
 });
 
-//获取整体统计信息
-router.get('/data/getStatisticsService', async (ctx,next) => {
-    let data = await fs.readJSON('data/data.json');
-    let statistics = data.getStatisticsService;
-    ctx.response.body = statistics;
+/**
+ * 【通用接口】
+ * @Service列表
+ * getIndexRumorList : 最新辟谣
+ * getIndexRecommendList : 最新防护知识
+ * getWikiList : 最新知识百科
+ * getEntries : 诊疗信息
+ * getListByCountryTypeService1 : 全国省份级患者分布数据
+ * getListByCountryTypeService2 : 全球海外其他地区患者分布数据
+ * getStatisticsService : 获取整体统计信息
+ */
+router.get('/data/:serviceName', async (ctx,next) => {
+    try {
+        let serviceName = ctx.params.serviceName;
+        console.log(`service = ${serviceName}`);
+        let data = await fs.readJSON('data/data.json');
+        let content = data[serviceName];
+        if(content){
+            ctx.response.body = content;
+        }else{
+            ctx.response.body = 'Not Found'
+        }
+    } catch (error) {
+        console.log(error);   
+    }
 });
+
 
 // add router middleware:
 app.use(router.routes());
 
-app.listen(3000);
+app.listen(3001);
