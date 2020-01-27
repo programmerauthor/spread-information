@@ -1,0 +1,10 @@
+{
+    "update":{
+        "appVersionCode":6,
+        "appVersion": "0.0.6",
+        "appName": "优化了体验感",
+        "updateInfo": "优化细节和无联系人下状态检测",
+        "downloadUrl": "http://www.flutterj.com/app-release.apk",
+        "appId": "001"
+    }
+}
