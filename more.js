@@ -1,5 +1,6 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
+const process = require('process');
 
 async function getTimelineMore(response){
     try {
@@ -60,5 +61,6 @@ async function main(){
 
 main().catch((error) => {
     console.log(error);
+    process.exit();
 })
 
