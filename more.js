@@ -20,8 +20,9 @@ async function getTimelineMore(response){
 async function getTimelineService() {
     let baseUrl = `https://3g.dxy.cn/newh5/view/pneumonia_timeline`;
     let browser = await puppeteer.launch({
-        headless:false,
-        devtools:true
+        headless:true,
+        devtools:false,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     })
     const page = await browser.newPage();
     let more;
