@@ -2,7 +2,7 @@
   "name": "dxyinfo",
   "version": "1.0.0",
   "description": "",
-  "main": "api.js",
+  "main": "more.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +13,7 @@
     "cheerio": "^1.0.0-rc.3",
     "fs-extra": "^8.1.0",
     "koa": "^2.11.0",
-    "koa-router": "^8.0.6"
+    "koa-router": "^8.0.6",
+    "puppeteer": "^2.0.0"
   }
 }
