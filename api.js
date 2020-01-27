@@ -93,19 +93,9 @@ router.get('/data/:serviceName', async (ctx,next) => {
     }
 });
 
-router.get('/app/update/:appId/:appVersionCode', async (ctx,next) => {
-    let appId = ctx.params.appId;
-    let appVersionCode = ctx.params.appVersionCode;
+router.get('/app/update', async (ctx,next) => {
     let update = (await fs.readJSON('data/app.json')).update;
-    let body = {
-        hasUpdate:false,
-        data:{}
-    };
-    if(appId == update.appId && appVersionCode < update.appVersionCode){
-        body.hasUpdate = true;
-        body.data = update;
-    }
-    ctx.response.body = body; 
+    ctx.response.body = update;
 });
 
 
