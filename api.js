@@ -68,8 +68,8 @@ router.get('/data/getNewest/:lastid', async (ctx,next) => {
 });
 
 /**
- * 【通用接口】
- * @Service列表
+ * 【新增接口 : data/<Service>】
+ * @Service列表  
  * getIndexRumorList : 最新辟谣
  * getIndexRecommendList : 最新防护知识
  * getWikiList : 最新知识百科
