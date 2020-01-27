@@ -1,0 +1,23 @@
+{
+  "apps":
+   [
+    {
+      "name": "Information",
+      "cwd": "./",
+      "script": "./app.js",
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "error_file": "./log/InformationError.log",
+      "out_file": "./log/Information.log",
+      "pid_file": "./pid/Information.pid",
+      "min_uptime": "120s",
+      "max_restarts": 8,
+      "max_memory_restart": "100M",
+      "cron_restart": "*/2 * * * *",
+      "exec_interpreter": "node",
+      "exec_mode": "cluster",
+      "instances": 1,
+      "autorestart": false,
+      "vizion": false
+    }
+  ]
+}
