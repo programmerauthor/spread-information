@@ -46,7 +46,8 @@ async function getTimelineService() {
             }
         });
     });
-    let timeline = less.concat(more);
+    // let timeline = less.concat(more);
+    let timeline = [].concat(more);
     await browser.close();
     return JSON.stringify(timeline || []);
 }
