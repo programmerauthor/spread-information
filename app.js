@@ -3,6 +3,7 @@ const Cheerio = require('cheerio');
 const vm = require('vm');
 const process = require('process');
 const fs = require('fs-extra')
+const CountryMap = require('./addition/country-map');
 
 const url = `https://3g.dxy.cn/newh5/view/pneumonia_peopleapp?from=timeline&isappinstalled=0`;
 async function getData(){
@@ -40,6 +41,11 @@ async function main(){
         console.log(error);
     }
     await fs.writeJSON('data/data.json',data)//保存数据
+    try {
+        await CountryMap.getCountryMap();//更新全国分布地区
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 main().catch((error) => {

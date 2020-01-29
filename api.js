@@ -1,9 +1,10 @@
+const fs = require('fs-extra');
+const serve = require('koa-static');
 const Koa = require('koa');
 const router = require('koa-router')();
 const app = new Koa();
-const fs = require('fs-extra');
 
-
+app.use(serve('./assets/'));
 
 //获取最新的数据集合
 function getNewInfos(newTimeline,lastid){
@@ -84,6 +85,9 @@ router.get('/data/:serviceName', async (ctx,next) => {
         let data = await fs.readJSON('data/data.json');
         let content = data[serviceName];
         if(content){
+            if(serviceName == 'getStatisticsService'){
+                content['imgUrl'] = 'http://49.232.173.220:3001/images/distribution-nationale.png';
+            }
             ctx.response.body = content;
         }else{
             ctx.response.body = 'Not Found'
