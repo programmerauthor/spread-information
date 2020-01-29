@@ -1,3 +1,4 @@
+[TOC]
 ## 简介
 
 [看这里](https://juejin.im/post/5e2c6a6e51882526b757cf2e)
@@ -26,6 +27,18 @@
 ## API文档
 [详细文档](https://programmerauthor.github.io/spread-information-docs/)
 
+## 如何部署API项目
+
+首先全局安装pm2,并安装好依赖
+```
+npm i pm2 -g
+npm i
+```
+然后在代码目录下执行
+```
+pm2 start pm2Config.json
+```
+
 ## 线上服务
 我在服务器上跑了一份，方便有需要的同学使用：
 
@@ -38,14 +51,29 @@ http://49.232.173.220:3001/data/getAreaStat/山东
 
 http://49.232.173.220:3001/data/getNewest/281
 
-## 如何使用
+## 更多服务器
 
-首先全局安装pm2,并安装好依赖
-```
-npm i pm2 -g
-npm i
-```
-然后在代码目录下执行
-```
-pm2 start pm2Config.json
-```
+* https://www.leviatan.cn/2019-nCoV
+    > 感谢提供部署服务的 [SimonRiley-343](https://github.com/SimonRiley-343)
+    > 备注：此服务器只支持 POST 请求 
+
+## 衍生项目
+
+### App客户端
+
+
+* 效果图
+
+|![](assets/local/home.png)|![](assets/local/lore.png)|
+|---|---|
+|![](assets/local/protect.png)|![](assets/local/rumor.png)|
+
+
+[下载地址](http://www.flutterj.com/nCoV-2019.apk)
+
+扫码下载：
+
+![](assets/local/download.png)
+
+[App项目地址](https://github.com/ahyangnb/ncov_2019)
+
