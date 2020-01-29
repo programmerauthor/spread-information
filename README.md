@@ -37,3 +37,15 @@
 http://49.232.173.220:3001/data/getAreaStat/山东
 
 http://49.232.173.220:3001/data/getNewest/281
+
+## 如何使用
+
+首先全局安装pm2,并安装好依赖
+```
+npm i pm2 -g
+npm i
+```
+然后在代码目录下执行
+```
+pm2 start pm2Config.json
+```
