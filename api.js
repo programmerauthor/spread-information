@@ -26,6 +26,7 @@ function getNewInfos(newTimeline,lastid){
 
 //获取所有信息
 router.get('/data/all', async (ctx, next) => {
+    console.log('/data/all');
     let data = await fs.readJSON('data/data.json');
     ctx.response.body = data;
 });
@@ -54,6 +55,7 @@ router.get('/data/getAreaStat/:provice', async (ctx, next) =>{
 
 //获取信息时间线
 router.get('/data/getTimelineService', async (ctx,next) => {
+    console.log('/data/getTimelineService');
     let timeline = await fs.readJSON('data/timeline.json');
     ctx.response.body = timeline;
 });
@@ -61,6 +63,7 @@ router.get('/data/getTimelineService', async (ctx,next) => {
 //获取最新事件
 router.get('/data/getNewest/:lastid', async (ctx,next) => {
     let lastid = ctx.params.lastid;
+    console.log(`/data/getNewest/:${lastid}`);
     let data = await fs.readJSON('data/data.json');
     let timeline = data.getTimelineService;
     let newest = lastid ? getNewInfos(timeline,lastid) : [timeline[0]];
@@ -98,6 +101,7 @@ router.get('/data/:serviceName', async (ctx,next) => {
 });
 
 router.get('/app/update', async (ctx,next) => {
+    console.log('app/update');
     let update = (await fs.readJSON('data/app.json')).update;
     ctx.response.body = update;
 });
