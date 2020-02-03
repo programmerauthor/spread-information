@@ -15,11 +15,13 @@ async function getCountryMap() {
         waitUntil:'networkidle0',
         timeout: 120000
     });
-    await page.waitFor('#root > div > div.mapBox___qoGhu > div:nth-child(4)');
+    // await page.waitFor('#root > div > div.mapBox___qoGhu > div:nth-child(4)');
+    await page.waitFor('canvas');
     let clip = await page.$eval(`body`, el =>{
         return new Promise((resolve,reject) =>{
             try {
-                let rect = document.querySelector('#root > div > div.mapBox___qoGhu > div:nth-child(4)').getClientRects()[0];
+                // let rect = document.querySelector('#root > div > div.mapBox___qoGhu > div:nth-child(4)').getClientRects()[0];
+                let rect = document.querySelector('canvas').getClientRects()[0];
                 document.body.style.overflow="hidden"
                 window.scrollTo(0,rect.y);
                 document.querySelector("div[class^='tab_']").style.visibility="hidden"
@@ -37,6 +39,9 @@ async function getCountryMap() {
         });
     });
     console.log(clip);
+    await page.mouse.move(clip.x+10, clip.y+10,{ steps : 3});
+    await page.mouse.down();
+    await page.mouse.up();
     await page.screenshot({
         path: 'assets/images/distribution-nationale.png',
         clip: clip
