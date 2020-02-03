@@ -89,7 +89,7 @@ router.get('/data/:serviceName', async (ctx,next) => {
         let content = data[serviceName];
         if(content){
             if(serviceName == 'getStatisticsService'){
-                content['imgUrl'] = 'http://49.232.173.220:3001/images/distribution-nationale.png';
+                content['imgUrl'] = `http://49.232.173.220:3001/images/distribution-nationale.png?time=${new Date().getTime()}`;
             }
             ctx.response.body = content;
         }else{
