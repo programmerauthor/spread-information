@@ -24,7 +24,8 @@ async function getCountryMap() {
                 let rect = document.querySelector('canvas').getClientRects()[0];
                 document.body.style.overflow="hidden"
                 window.scrollTo(0,rect.y);
-                document.querySelector("div[class^='tab_']").style.visibility="hidden"
+                document.querySelector("div[class^='tab_']").style.visibility="hidden";
+                document.querySelector('#root > div > div.mapBox___qoGhu > div.wrapper___1wmEy > div:nth-child(1) > div:nth-child(2)').style.visibility='hidden';
                 setTimeout(()=>{
                     resolve({
                         x:parseInt(rect.x),
