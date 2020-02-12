@@ -2,6 +2,7 @@ const fs = require('fs-extra');
 const serve = require('koa-static');
 const Koa = require('koa');
 const router = require('koa-router')();
+const cors = require('koa2-cors');
 const app = new Koa();
 
 app.use(serve('./assets/'));
@@ -108,6 +109,7 @@ router.get('/app/update', async (ctx,next) => {
 
 
 // add router middleware:
+app.use(cors());
 app.use(router.routes());
 
 app.listen(3001);
