@@ -1,10 +1,10 @@
 {
     "update":{
         "force":false,
-        "appVersionCode":9,
-        "appVersion": "0.0.9",
+        "appVersionCode":10,
+        "appVersion": "0.0.10",
         "appName": "修复Bug",
-        "updateInfo": "2020.2.6 - 修复了统计信息出错和诊疗无图标和对齐问题",
+        "updateInfo": "2020.2.16 - 1.辟谣卡片标题最大行数调整为2行；<br>2.统计数据布局优化。<br>3.修复统计图不能展示问题",
         "downloadUrl": "http://www.flutterj.com/nCoV-2019.apk",
         "appId": "001"
     }
