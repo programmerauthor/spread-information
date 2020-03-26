@@ -65,8 +65,9 @@ router.get('/data/getTimelineService', async (ctx,next) => {
 router.get('/data/getNewest/:lastid', async (ctx,next) => {
     let lastid = ctx.params.lastid;
     console.log(`/data/getNewest/:${lastid}`);
-    let data = await fs.readJSON('data/data.json');
-    let timeline = data.getTimelineService;
+    // let data = await fs.readJSON('data/data.json');
+    // let timeline = data.getTimelineService;
+    let timeline = await fs.readJSON('data/timeline.json');
     let newest = lastid ? getNewInfos(timeline,lastid) : [timeline[0]];
     ctx.response.body = newest;
 });
